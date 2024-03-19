@@ -16,7 +16,7 @@ class Cell:
             fill(255)
         noStroke()
         rect(SZ*self.r,SZ*self.c,SZ,SZ)
-    def checkNeighbors(self,cellList):
+    def checkNeighbors(self):
         if self.state == 1:return 1
         neighbs = 0 
         #check the neighbors
