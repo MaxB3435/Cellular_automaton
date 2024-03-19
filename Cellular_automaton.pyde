@@ -1,8 +1,9 @@
-GRID_W = 15
-GRID_H = 15
+GRID_W = 41
+GRID_H = 41
 
 #Size of cell
-#SZ = 18
+SZ = 18
+generation = 0
 class Cell:
     def __init__(self,c,r,state=0):
         self.c = c
@@ -39,10 +40,24 @@ def setup():
 
     
 def draw():
+    global generation,cellList
+    cellList = update(cellList)
     for row in cellList:
         for cell in row:
-            cell.state = cell.checkNeighbors()
             cell.display()
+    
+    generation +=1
+    if generation == 13:
+        noLoop()
+        
+def update(cellList):
+    newList = []
+    for r,row in enumerate(cellList):
+        newList.append([])
+        for c,cell in enumerate(row):
+            newList[r].append(Cell(c,r,cell.checkNeighbors()))
+    return newList[::]        
+    
             
 
 
