@@ -15,7 +15,7 @@ class Cell:
             fill(0)
         else:
             fill(255)
-        noStroke()
+        
         rect(SZ*self.r,SZ*self.c,SZ,SZ)
     def checkNeighbors(self):
         if self.state == 1:return 1
@@ -33,6 +33,7 @@ class Cell:
             return 0
         
 def setup():
+    noStroke()
     global SZ,cellList
     size(600,600)
     SZ = width // GRID_W +1
@@ -41,6 +42,7 @@ def setup():
     
 def draw():
     global generation,cellList
+    frameRate(10)
     cellList = update(cellList)
     for row in cellList:
         for cell in row:
