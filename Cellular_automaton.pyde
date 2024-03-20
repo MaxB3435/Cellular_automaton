@@ -1,5 +1,5 @@
-GRID_W = 41
-GRID_H = 41
+GRID_W = 51
+GRID_H = 51
 
 #Size of cell
 SZ = 18
@@ -41,16 +41,29 @@ def setup():
 
     
 def draw():
-    global generation,cellList
+  #  global generation,cellList
     frameRate(10)
+    #cellList = update(cellList)
+   # for row in cellList:
+   #     for cell in row:
+   #         cell.display()
+   # generation +=1
+    #if generation == 1:
+    #    noLoop()
+
+def keyPressed():
+    global generation,cellList
     cellList = update(cellList)
     for row in cellList:
         for cell in row:
             cell.display()
+    generation += 1
+    if generation == 30:
+        generation= 1
+        cellList = createCellList()
     
-    generation +=1
-    if generation == 13:
-        noLoop()
+    
+    
         
 def update(cellList):
     newList = []
